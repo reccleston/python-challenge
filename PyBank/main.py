@@ -9,24 +9,53 @@
 
 import os
 import csv
-import string 
-import random
 
 path = 'Resources'
-csvpath = os.path.join(path, 'budget_data.csv')
+file_name = 'budget_data.csv'
+csvpath = os.path.join(path, file_name)
 
 with open(csvpath, 'r') as inFile:
 
 	budget_sheet = csv.reader(inFile, delimiter=',')
-	next(budget_sheet)
+	header = next(budget_sheet)
 
 	total_months = 0
-	net = 0
-	current_month = ''
-	
-	for row in budget_sheet:
-		total_months += 1
-		net += int(row[1])
+	net = 0 
+	profits = []
+	changes = []
 
-	print(total_months)
-	print(net)
+	for month, profit in budget_sheet:
+		total_months += 1
+		net += int(profit)
+		profits.append(int(profit))
+
+	for month_num, profit in enumerate(profits):
+		print(profits[month_num + 1])
+		print(profits[month_num])
+		change = profits[month_num + 1] - profits[month_num]
+		print('change: ', change)
+		changes.append(change)
+
+	print('~*~*~*~')
+	print(changes)
+	# budget_sheet = csv.reader(inFile, delimiter=',')
+	# header = next(budget_sheet)
+
+	# total_months = 0
+	# net = 0
+	# change = 0
+	# current_month = ''
+
+	# for current_month, current_profit in budget_sheet:
+	# 	total_months += 1
+	# 	net += int(current_profit)
+	# 	print(current_month)
+	# 	print(current_profit)
+		
+
+	# print(total_months)
+	# print(net)
+
+
+	
+
