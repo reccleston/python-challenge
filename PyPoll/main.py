@@ -71,10 +71,10 @@ with open(in_csvpath, 'r') as inFile:
 	print('Winner: ', winner)
 	print('--------------------------')
 
-with open(out_csvpath, 'w', newline='') as OutFile:
+with open(out_csvpath, 'w', newline='') as outFile:
 
 	# Write analysis to .csv
-	summary = csv.writer(OutFile, delimiter=',')
+	summary = csv.writer(outFile, delimiter=',')
 
 	summary.writerow(['Election Results'])
 	summary.writerow(['--------------------------'])
