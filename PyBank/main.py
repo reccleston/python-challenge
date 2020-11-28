@@ -21,41 +21,34 @@ with open(csvpath, 'r') as inFile:
 
 	total_months = 0
 	net = 0 
+	months = []
 	profits = []
 	changes = []
 
 	for month, profit in budget_sheet:
 		total_months += 1
 		net += int(profit)
+		months.append(month)
 		profits.append(int(profit))
 
-	for month_num, profit in enumerate(profits):
-		print(profits[month_num + 1])
-		print(profits[month_num])
-		change = profits[month_num + 1] - profits[month_num]
-		print('change: ', change)
+	for i in range(len(profits) - 1):
+		change = profits[i + 1] - profits[i]
 		changes.append(change)
 
-	print('~*~*~*~')
-	print(changes)
-	# budget_sheet = csv.reader(inFile, delimiter=',')
-	# header = next(budget_sheet)
+	average_change = sum(changes) / len(changes)
 
-	# total_months = 0
-	# net = 0
-	# change = 0
-	# current_month = ''
+	great_increase = max(changes)
+	great_increase_month = changes.index(great_increase)
 
-	# for current_month, current_profit in budget_sheet:
-	# 	total_months += 1
-	# 	net += int(current_profit)
-	# 	print(current_month)
-	# 	print(current_profit)
-		
+	great_decrease = min(changes)
+	great_decrease_month = changes.index(great_decrease)
 
-	# print(total_months)
-	# print(net)
-
-
-	
+	print('Financial Analysis')
+	print('--------------------------')
+	print('Total months: ', total_months)
+	print('Total: $', net)
+	print('Average Change: $', round(average_change, 2))
+	print('Greatest Increase in Profits: ', months[great_increase_month], '($', great_increase, ')')
+	print('Greatest Decrease in Profits: ', months[great_decrease_month], '($', great_decrease, ')')
+	print('--------------------------')
 
