@@ -62,7 +62,7 @@ with open(in_csvpath, 'r') as inFile:
 		candidate_index = candidates.index(candidate)
 		votes_recieved = votes_per_candidate[candidate_index] 
 
-		percent_votes = round(100 * (votes_recieved / total_votes), 3)
+		percent_votes = format(100 * (votes_recieved / total_votes), '.2f')
 		print(candidate, ': ', percent_votes, '% (', votes_recieved, ')')
 
 	print('--------------------------')
